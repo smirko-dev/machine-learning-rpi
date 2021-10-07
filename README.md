@@ -51,22 +51,31 @@ Since there are Python wheels available for ARM architecture at https://github.c
 
 ```sh
 wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv7l.whl
-pip uninstall tensorflow
-pip install tensorflow-2.4.0-cp37-none-linux_armv7l.whl
+pip3 uninstall tensorflow
+pip3 install tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 ```
 
 ## Install Jupyter Hub
 
+### Install packages
+
 ```sh
 sudo apt-get install -y --no-install-recommends \
     npm \
-    nodejs 
+    nodejs
+
+sudo npm install -g configurable-http-proxy
 ```
 
+### Install Python modules
+
 ```sh
-sudo npm install -g configurable-http-proxy
-sudo pip3 install jupyterlab jupyterhub
+sudo pip3 install \
+    jupyterlab \
+    jupyterhub
 ```
+
+### Create JupyterHub configuration
 
 ```sh
 jupyterhub --generate-config 
