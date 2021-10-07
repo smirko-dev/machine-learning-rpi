@@ -50,9 +50,9 @@ sudo pip3 install \
 Since there are Python wheels available for ARM architecture at https://github.com/lhelontra/tensorflow-on-arm/releases we don't need to build from scratch.
 
 ```sh
-wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.0.0/tensorflow-2.0.0-cp37-none-linux_armv7l.whl
+wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 pip uninstall tensorflow
-pip install tensorflow-2.0.0-cp37-none-linux_armv7l.whl
+pip install tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 ```
 
 ## Install Jupyter Hub
