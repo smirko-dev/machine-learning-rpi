@@ -1,4 +1,4 @@
-# Machine Learning on a Raspberry Pi
+# Machine Learning with JupyterLab on a Raspberry Pi
 
 ## Setup environment
 
@@ -55,9 +55,9 @@ pip3 uninstall tensorflow
 pip3 install tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 ```
 
-## Install Jupyter Hub
+## Install Jupyter Lab
 
-### Install packages
+### Install packages and Python modules
 
 ```sh
 sudo apt-get install -y --no-install-recommends \
@@ -65,19 +65,44 @@ sudo apt-get install -y --no-install-recommends \
     nodejs
 
 sudo npm install -g configurable-http-proxy
-```
 
-### Install Python modules
-
-```sh
 sudo pip3 install \
-    jupyterlab \
-    jupyterhub
+    jupyterlab
 ```
 
-### Create JupyterHub configuration
+### Create a configuration
 
 ```sh
-jupyterhub --generate-config 
-sudo mv jupyterhub_config.py /root
+jupyter notebook --generate-config
+```
+
+### Create a password
+
+```sh
+jupyter notebook password
+```
+
+### Modify the settings
+
+#### ~/.jupyter/jupyter_notebook_config.py
+
+```py
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888
+c.NotebookApp.allow_remote_access = True
+c.NotebookApp.notebook_dir = '<your_notebook_folder>'
+```
+
+#### ~/.jupyter/jupyter_notebook_config.json
+
+```json
+{
+    "NotebookApp": {
+        "nbserver_extensions": {
+            "jupyterlab": true,
+            "jupyter_extensions_configurator": true
+        }
+    }
+}
 ```
