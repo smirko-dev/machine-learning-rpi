@@ -92,6 +92,7 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.port = 8888
 c.NotebookApp.allow_remote_access = True
 c.NotebookApp.notebook_dir = '<your_notebook_folder>'
+c.NotebookApp.default_url = '/lab'
 ```
 
 #### ~/.jupyter/jupyter_notebook_config.json
@@ -106,3 +107,32 @@ c.NotebookApp.notebook_dir = '<your_notebook_folder>'
     }
 }
 ```
+
+### Create the service
+
+Create the service file `/lib/systemd/system/jupyterlab.service`.
+
+```txt
+[Unit] 
+Description=JupyterLab Service 
+After=multi-user.target  
+
+[Service] 
+User=<user_name> 
+ExecStart=/usr/local/bin/jupyter notebook
+Restart=on-failure
+
+[Install] 
+WantedBy=multi-user.target
+```
+
+Start the service.
+
+```sh
+sudo systemctl daemon-reload 
+sudo systemctl start jupyterlab
+sudo systemctl enable jupyterlab 
+sudo systemctl status jupyterlab.service
+```
+
+If the status command shows "active (running)" the Jupyter Lab should be available `http://<server_ip_address>:8888/lab`.
