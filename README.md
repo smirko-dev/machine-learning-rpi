@@ -184,3 +184,9 @@ ln -s <r_home_directory>/bin/Rscript /usr/local/bin/Rscript
 install.packages('IRkernel', repos='http://cran.rstudio.com/')
 IRkernel::installspec()
 ```
+
+## Links
+
+https://towardsdatascience.com/setup-your-home-jupyterhub-on-a-raspberry-pi-7ad32e20eed
+https://github.com/kleinee/jns
+https://github.com/armindocachada/raspberrypi-docker-tensorflow-opencv/blob/main/Dockerfile_tensorflow
