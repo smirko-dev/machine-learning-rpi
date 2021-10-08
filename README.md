@@ -20,8 +20,6 @@ apt-get install -y --no-install-recommends \
     libhdf5-dev \
     libeigen3-dev \
     libopenjp2-7-dev \
-    libgit2-dev \
-    libxml2-de \
     libzmq3-dev \
     pybind11-dev \
     python3 \
@@ -157,7 +155,9 @@ sudo apt remove r-base
 
 sudo apt-get install -y --no-install-recommends \
     libbz2-dev \
-    libreadline-de
+    libreadline-de \
+    libgit2-dev \
+    libxml2-de
 ```
 
 ### Build and install binaries
