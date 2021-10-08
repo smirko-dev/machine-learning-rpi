@@ -20,6 +20,8 @@ apt-get install -y --no-install-recommends \
     libhdf5-dev \
     libeigen3-dev \
     libopenjp2-7-dev \
+    libgit2-dev \
+    libxml2-de \
     libzmq3-dev \
     pybind11-dev \
     python3 \
