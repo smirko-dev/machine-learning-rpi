@@ -1,5 +1,7 @@
 FROM raspbian/stretch
 
+USER root
+
 WORKDIR /notebooks
 
 # Install packages
