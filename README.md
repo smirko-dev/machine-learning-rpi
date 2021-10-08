@@ -10,11 +10,18 @@ sudo apt-get update && sudo apt-get upgrade
 apt-get install -y --no-install-recommends \
     build-essential \
     curl \
+    gdown \
+    gfortran \
     libc-ares-dev \
+    libopenblas-dev \
+    libblas-dev \
+    liblapack-dev \
     libatlas-base-dev \
     libhdf5-dev \
     libeigen3-dev \
     libopenjp2-7-dev \
+    libzmq3-dev \
+    pybind11-dev \
     python3 \
     python3-dev \
     python3-pip \
@@ -42,12 +49,14 @@ sudo pip3 install \
     matplot \
     numpy \
     pandas \
+    scikit-learn \
+    scipy \
     wheel
 ```
 
 ### Install Tensorflow
 
-Since there are Python wheels available for ARM architecture at https://github.com/lhelontra/tensorflow-on-arm/releases we don't need to build from scratch.
+Since there are Python wheels available for ARM architecture at https://github.com/lhelontra/tensorflow-on-arm/releases we don't need to build it.
 
 ```sh
 wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv7l.whl
@@ -135,4 +144,43 @@ sudo systemctl enable jupyterlab
 sudo systemctl status jupyterlab.service
 ```
 
-If the status command shows "active (running)" the Jupyter Lab should be available `http://<server_ip_address>:8888/lab`.
+If the status command shows "active (running)" the Jupyter Lab should be reachable by `http://<server_ip_address>:8888/lab`.
+
+## Install R-3.6.0 and the IRkernel
+
+### Install packages
+
+```sh
+sudo apt remove r-base
+
+sudo apt-get install -y --no-install-recommends \
+    libbz2-dev \
+    libreadline-de
+```
+
+### Build and install binaries
+
+```sh
+wget http://mirrors.psu.ac.th/pub/cran/src/base/R-3/R-3.6.3.tar.gz
+tar -xvf R-3.6.3.tar.gz
+rm R-3.6.3.tar.gz
+cd R-3.6.3
+./configure --with-x=no --disable-java --prefix=<r_home_directory>
+make && make install
+cd ..
+rm R-3.6.3
+```
+
+### Create soft links
+
+```sh
+ln -s <r_home_directory>/bin/R /usr/local/bin/R
+ln -s <r_home_directory>/bin/Rscript /usr/local/bin/Rscript
+```
+
+### Build and install IRkernel
+
+```R
+install.packages('IRkernel', repos='http://cran.rstudio.com/')
+IRkernel::installspec()
+```
