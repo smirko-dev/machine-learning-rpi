@@ -188,7 +188,11 @@ IRkernel::installspec()
 ## Links
 
 https://towardsdatascience.com/setup-your-home-jupyterhub-on-a-raspberry-pi-7ad32e20eed
+
 https://github.com/kleinee/jns
+
 https://github.com/armindocachada/raspberrypi-docker-tensorflow-opencv/blob/main/Dockerfile_tensorflow
+
 https://raspberrypi.stackexchange.com/questions/107483/error-installing-tensorflow-cannot-find-libhdfs-so
+
 https://github.com/ml-tooling/ml-workspace
