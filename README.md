@@ -1,5 +1,13 @@
 # Machine Learning with JupyterLab on a Raspberry Pi
 
+[Jupyter](https://jupyter.org)
+
+[Tensorflow](https://www.tensorflow.org)
+
+[Raspberry Pi](https://www.raspberrypi.org)
+
+[R](https://www.r-project.org)
+
 ## Setup environment
 
 ### Install packages
