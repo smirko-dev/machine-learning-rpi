@@ -62,7 +62,7 @@ sudo pip3 install \
     wheel
 ```
 
-### Install Tensorflow
+### Install Tensorflow 2.4.0
 
 Since there are Python wheels available for ARM architecture at https://github.com/lhelontra/tensorflow-on-arm/releases we don't need to build it.
 
@@ -154,7 +154,7 @@ sudo systemctl status jupyterlab.service
 
 If the status command shows "active (running)" the Jupyter Lab should be reachable by `http://<server_ip_address>:8888/lab`.
 
-## Install R-3.6.0 and the IRkernel
+## Install R-4.1.1 and the IRkernel
 
 ### Install packages
 
@@ -165,20 +165,22 @@ sudo apt-get install -y --no-install-recommends \
     libbz2-dev \
     libreadline-de \
     libgit2-dev \
-    libxml2-de
+    libxml2-de \
+    libpcre3 \
+    libpcre3-dev
 ```
 
 ### Build and install binaries
 
 ```sh
-wget http://mirrors.psu.ac.th/pub/cran/src/base/R-3/R-3.6.3.tar.gz
-tar -xvf R-3.6.3.tar.gz
-rm R-3.6.3.tar.gz
-cd R-3.6.3
-./configure --with-x=no --disable-java --prefix=<r_home_directory>
+wget https://ftp.fau.de/cran/src/base/R-4/R-4.1.1.tar.gz
+tar -xvf R-4.1.1.tar.gz
+rm R-4.1.1.tar.gz
+cd R-4.1.1
+./configure --with-x=no --disable-java --with-pcre1 --prefix=<r_home_directory>
 make && make install
 cd ..
-rm R-3.6.3
+rm R-4.1.1
 ```
 
 ### Create soft links
