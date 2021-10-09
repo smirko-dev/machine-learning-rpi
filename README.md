@@ -1,12 +1,16 @@
 # Machine Learning with JupyterLab on a Raspberry Pi
 
-[Jupyter](https://jupyter.org)
+Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.org) on a [Raspberry Pi](https://www.raspberrypi.org) as a service for remote access.
 
-[Tensorflow](https://www.tensorflow.org)
+[Setup environment](#setup-environment)
 
-[Raspberry Pi](https://www.raspberrypi.org)
+[Install Tensorflow](#install-tensorflow)
 
-[R](https://www.r-project.org)
+[Install Jupyter Lab](#install-jupyter-lab)
+
+[Install R and IRkernel](#install-r-and-irkernel) (experimental!)
+
+[Links](#links)
 
 ## Setup environment
 
@@ -62,7 +66,7 @@ sudo pip3 install \
     wheel
 ```
 
-### Install Tensorflow 2.4.0
+## Install Tensorflow
 
 Since there are Python wheels available for ARM architecture at https://github.com/lhelontra/tensorflow-on-arm/releases we don't need to build it.
 
@@ -154,7 +158,9 @@ sudo systemctl status jupyterlab.service
 
 If the status command shows "active (running)" the Jupyter Lab should be reachable by `http://<server_ip_address>:8888/lab`.
 
-## Install R-4.1.1 and the Irkernel (experimental)
+## Install R and IRkernel
+
+This section is experimental!
 
 ### Install packages
 
