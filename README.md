@@ -154,7 +154,7 @@ sudo systemctl status jupyterlab.service
 
 If the status command shows "active (running)" the Jupyter Lab should be reachable by `http://<server_ip_address>:8888/lab`.
 
-## Install R-4.1.1 and the IRkernel
+## Install R-4.1.1 and the Irkernel (experimental)
 
 ### Install packages
 
