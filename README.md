@@ -88,8 +88,8 @@ sudo apt-get install -y --no-install-recommends \
 sudo npm install -g configurable-http-proxy
 
 sudo pip3 install \
-	ipywidgets \
-	jupyter \
+    ipywidgets \
+    jupyter \
     jupyterlab
 ```
 
