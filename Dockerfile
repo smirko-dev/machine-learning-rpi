@@ -2,12 +2,12 @@ FROM raspbian/stretch
 
 USER root
 
-WORKDIR /notebooks
+WORKDIR /root
 
 # Install packages
 RUN apt-get update && apt-get -y install --no-install-recommends \
-    gfortran \
     build-essential \
+    cmake \
     curl \
     gcc \
     g++ \
@@ -16,7 +16,10 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     jupyterlab \
     jupyter-tensorboard \
     libc-ares-dev \
+    libfreetype6-dev \
+    libncurses5-dev \
     libopenblas-dev \
+    libpng \
     libblas-dev \
     liblapack-dev \
     libatlas-base-dev \
@@ -45,20 +48,48 @@ RUN pip3 install --upgrade pip \
 RUN pip3 install \
     keras_applications \
     keras_preprocessing \
+	ipywidgets \
+	jupyter \
+	jupyterlab \
     matplot \
     numpy \
     pandas \
+    readline \
     scikit-learn \
     scipy \
     wheel
 
-# Install Tensorflow 2.4.0
+# Configure JupyterLab
+RUN jupyter nbextension enable --py widgetsnbextension
+RUN jupyter serverextension enable --py jupyterlab
+RUN mkdir notebooks
+RUN jupyter notebook --generate-config \
+	&& sed -i "c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /root/.jupyter/jupyter_notebook_config.py \
+	&& sed -i "c.NotebookApp.ip/c c.NotebookApp.ip = '*'" /root/.jupyter/jupyter_notebook_config.py
+	&& set -i "c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '/root/notebooks'" /root/.jupyter/jupyter_notebook_config.py
+	&& set -i "c.NotebookApp.allow_remote_access/c c.NotebookApp.allow_remote_access = True" /root/.jupyter/jupyter_notebook_config.py
+
+# Install Tensorflow
 RUN wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv7l.whl \
     && pip3 install tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 
-# Install Jupyter Tensorboard Extension (requires NodeJs >= 12.0)
-#RUN jupyter labextension install jupyterlab_tensorboard
+# Install Tini
+ENV TINI_VERSION 0.18.0
+ENV CFLAGS="-DPR_SET_CHILD_SUBREAPER=36 -DPR_GET_CHILD_SUBREAPER=37"
+ADD https://github.com/krallin/tini/archives/v${TINI_VERSION}.tar.gz /root/v${TINI_VERSION}.tar.gz
+RUN tar zxvf v${TINI_VERSION}.tar.gz \
+	&& cd tinit-${TINI_VERSION} \
+	&& cmake . \
+	&& make \
+	&& cp tini /usr/bin/. \
+	&& cd .. \
+	&& rm -rf "./tini-${TINI_VERSION}" \
+	&& rm "./v${TINI_VERSION}.tar.gz"
+
+VOLUME /root/notebooks
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
 EXPOSE 8888
 
-ENTRYPOINT ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
+CMD ["jupyter", "lab","--allow-root"]
