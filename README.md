@@ -88,6 +88,8 @@ sudo apt-get install -y --no-install-recommends \
 sudo npm install -g configurable-http-proxy
 
 sudo pip3 install \
+	ipywidgets \
+	jupyter \
     jupyterlab
 ```
 
@@ -160,8 +162,6 @@ If the status command shows "active (running)" the Jupyter Lab should be reachab
 
 ## Install R and IRkernel
 
-This section is experimental!
-
 ### Install packages
 
 ```sh
@@ -212,5 +212,7 @@ https://github.com/kleinee/jns
 https://github.com/armindocachada/raspberrypi-docker-tensorflow-opencv/blob/main/Dockerfile_tensorflow
 
 https://raspberrypi.stackexchange.com/questions/107483/error-installing-tensorflow-cannot-find-libhdfs-so
+
+https://github.com/kidig/rpi-jupyter-lab
 
 https://github.com/ml-tooling/ml-workspace
