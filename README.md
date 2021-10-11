@@ -208,12 +208,16 @@ IRkernel::installspec()
 
 ## Use Docker container
 
+### Install packages
+
 ```sh
 curl -sSL https://get.docker.com | sh
 sudo usermod -aG docker <user_name>
 sudo pip3 install docker-compose
 sudo systemctl enable docker
 ```
+
+### Build and start container
 
 ```sh
 docker-compose build
