@@ -10,6 +10,8 @@ Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.
 
 [Install R and IRkernel](#install-r-and-irkernel) (experimental!)
 
+[Docker](#use-docker-container)
+
 [Links](#links)
 
 ## Setup environment
@@ -22,7 +24,6 @@ sudo apt-get update && sudo apt-get upgrade
 apt-get install -y --no-install-recommends \
     build-essential \
     curl \
-    gdown \
     gfortran \
     libc-ares-dev \
     libopenblas-dev \
@@ -32,6 +33,8 @@ apt-get install -y --no-install-recommends \
     libhdf5-dev \
     libeigen3-dev \
     libopenjp2-7-dev \
+    libssl-dev \
+    libffi-dev \
     libzmq3-dev \
     pybind11-dev \
     python3 \
@@ -201,6 +204,20 @@ ln -s <r_home_directory>/bin/Rscript /usr/local/bin/Rscript
 ```R
 install.packages('IRkernel', repos='http://cran.rstudio.com/')
 IRkernel::installspec()
+```
+
+## Use Docker container
+
+```sh
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker <user_name>
+sudo pip3 install docker-compose
+sudo systemctl enable docker
+```
+
+```sh
+docker-compose build
+docker-compose up -d
 ```
 
 ## Links
