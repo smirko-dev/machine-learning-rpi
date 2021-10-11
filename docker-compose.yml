@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  jupyter:
+    container_name: jupyterlab
+    restart: unless-stopped
+    build: .
+#    environment:
+#      - JUPYTER_PASSWORD=jupyter
+#      - TINI_VERSION=0.19.0
+    ports:
+      - 8881:8888
+    volumes:
+      - ~/jupyter/notebooks:/root/notebooks
