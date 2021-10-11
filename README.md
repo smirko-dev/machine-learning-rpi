@@ -169,7 +169,7 @@ sudo apt remove r-base
 
 sudo apt-get install -y --no-install-recommends \
     libbz2-dev \
-    libreadline-de \
+    libreadline-dev \
     libgit2-dev \
     libxml2-de \
     libpcre3 \
