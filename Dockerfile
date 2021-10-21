@@ -38,6 +38,8 @@ RUN chmod +x /usr/bin/tini
 #	&& pip3 uninstall tensorflow \
 #	&& pip3 install tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl
 
+# RUN pip3 install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl
+
 # Configure JupyterLab
 ENV JUPYTER_PASSWORD jupyter
 RUN jupyter serverextension enable --py jupyterlab
