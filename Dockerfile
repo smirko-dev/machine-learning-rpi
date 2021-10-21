@@ -45,12 +45,12 @@ RUN mkdir notebooks
 RUN jupyter notebook --generate-config
 RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /root/.jupyter/jupyter_notebook_config.py \
 	&& sed -i "/c.NotebookApp.ip/c c.NotebookApp.ip = '*'" /root/.jupyter/jupyter_notebook_config.py \
-	&& set -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '/root/notebooks'" /root/.jupyter/jupyter_notebook_config.py \
-	&& set -i "/c.NotebookApp.allow_remote_access/c c.NotebookApp.allow_remote_access = True" /root/.jupyter/jupyter_notebook_config.py \
-	&& set -i "/c.NotebookApp.token/c c.NotebookApp.token = ''" /root/.jupyter/jupyter_notebook_config.py \
-	&& set -i "/c.NotebookApp.password_required/c c.NotebookApp.password_required = True" /root/.jupyter/jupyter_notebook_config.py \
+	&& sed -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '/root/notebooks'" /root/.jupyter/jupyter_notebook_config.py \
+	&& sed -i "/c.NotebookApp.allow_remote_access/c c.NotebookApp.allow_remote_access = True" /root/.jupyter/jupyter_notebook_config.py \
+	&& sed -i "/c.NotebookApp.token/c c.NotebookApp.token = ''" /root/.jupyter/jupyter_notebook_config.py \
+	&& sed -i "/c.NotebookApp.password_required/c c.NotebookApp.password_required = True" /root/.jupyter/jupyter_notebook_config.py \
 	&& python -c "from notebook.auth import passwd; print(passwd('${JUPYTER_PASSWORD}'));" >> password \
-	&& set -i "/c.NotebookApp.password/c c.NotebookApp.password = 'sha1:`cat password`'" /root/.jupyter/jupyter_notebook_config.py \
+	&& sed -i "/c.NotebookApp.password/c c.NotebookApp.password = 'sha1:`cat password`'" /root/.jupyter/jupyter_notebook_config.py \
 	&& rm -f password
 
 # Add volume for notebooks
