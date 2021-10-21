@@ -49,7 +49,7 @@ RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /r
 	&& sed -i "/c.NotebookApp.allow_remote_access/c c.NotebookApp.allow_remote_access = True" /root/.jupyter/jupyter_notebook_config.py \
 	&& sed -i "/c.NotebookApp.token/c c.NotebookApp.token = ''" /root/.jupyter/jupyter_notebook_config.py \
 	&& sed -i "/c.NotebookApp.password_required/c c.NotebookApp.password_required = True" /root/.jupyter/jupyter_notebook_config.py \
-	&& python -c "from notebook.auth import passwd; print(passwd('${JUPYTER_PASSWORD}'));" >> password \
+	&& python -c "from notebook.auth import passwd; print(passwd('${JUPYTER_PASSWORD}', 'sha1'));" >> password \
 	&& sed -i "/c.NotebookApp.password/c c.NotebookApp.password = 'sha1:`cat password`'" /root/.jupyter/jupyter_notebook_config.py \
 	&& rm -f password
 
