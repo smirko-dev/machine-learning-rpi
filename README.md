@@ -210,7 +210,8 @@ IRkernel::installspec()
 
 The docker container is based on [Debian Buster](https://hub.docker.com/r/arm32v7/debian/) for arm32v7 and installs
  - [Tensorflow-on-arm](https://github.com/lhelontra/tensorflow-on-arm)
- - [Tini]() which operates as a process subreaper for jupyter to prevent kernel crashes
+ - [scikit-learn](https://scikit-learn.org/stable/index.html)
+ - [Tini](https://github.com/krallin/tini) which operates as a process subreaper for jupyter to prevent kernel crashes
  - [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) as a simple [notebook server](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html) with password protection
 
 ### Install packages
