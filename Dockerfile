@@ -7,25 +7,37 @@ WORKDIR /root
 # Install packages
 RUN apt-get update && apt-get -y install --no-install-recommends \
 	build-essential \
+	libatlas-base-dev \
+	libc-ares-dev \
+	libeigen3-dev \
 	libffi-dev \
+	libhdf5-103 \
 	libhdf5-dev \
-	python3.7 \
+	libhdf5-serial-dev \
+	libopenmpi-dev \
+	openmpi-bin \
+	openssl \
+	python3 \
 	python3-dev \
 	python3-pip \
 	python3-setuptools \
-	python3-sklearn \
+	wget \
 	&& \
 	apt-get clean
 
-# Switch to Python3
+# Switch to Python 3
 RUN pip3 install --upgrade pip \
 	&& rm -f /usr/bin/python \
-	&& ln -s /usr/bin/python3.7 /usr/bin/python
+	&& ln -s /usr/bin/python3 /usr/bin/python \
+	&& python --version \
 
 # Install Python modules
 RUN pip3 install \
 	Cython \
-	jupyterlab==3.1.13 \
+#	matplotlib \
+#	pandas \
+#	scikit-learn \
+#	seaborn \
 	wheel
 
 # Add Tini
@@ -35,12 +47,19 @@ RUN chmod +x /usr/bin/tini
 
 # Install Tensorflow
 ENV TENSORFLOW_VERSION 2.4.0
-RUN wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v${TENSORFLOW_VERSION}/tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl \
-	&& pip3 uninstall tensorflow \
+ADD https://github.com/bitsy-ai/tensorflow-arm-bin/releases/download/v${TENSORFLOW_VERSION}/tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl .
+RUN pip3 install \
+	h5py==3.5.0 \
+	keras_applications==1.0.8 --no-deps \
+	keras_preprocessing==1.1.0 --no-deps
+RUN pip3 uninstall tensorflow \
 	&& pip3 install tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl
 
-# Configure JupyterLab
+# Install and configure Jupyter
 ENV JUPYTER_PASSWORD jupyter
+RUN pip3 install \
+	notebook==6.4.5 \
+	jupyterlab==3.2.1
 RUN jupyter serverextension enable --py jupyterlab
 RUN mkdir notebooks
 RUN jupyter notebook --generate-config
@@ -63,5 +82,5 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 # Expose port
 EXPOSE 8888
 
-# Start JupyterLab
+# Start Jupyter
 CMD ["jupyter", "lab", "--allow-root"]
