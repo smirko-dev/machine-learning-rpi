@@ -1,4 +1,4 @@
-FROM arm32v7/ubuntu:bionic
+FROM arm32v7/debian:buster
 
 USER root
 
@@ -9,7 +9,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 	build-essential \
 	libffi-dev \
 	openssl \
-	python3 \
+	python3.7 \
 	python3-dev \
 	python3-pip \
 	python3-setuptools \
@@ -33,12 +33,10 @@ ADD https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-armh
 RUN chmod +x /usr/bin/tini
 
 # Install Tensorflow
-#ENV TENSORFLOW_VERSION 2.4.0
-#RUN wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl \
-#	&& pip3 uninstall tensorflow \
-#	&& pip3 install tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl
-
-# RUN pip3 install https://github.com/bitsy-ai/tensorflow-arm-bin/releases/download/v${TENSORFLOW_VERSION}/tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_aarch64.whl
+ENV TENSORFLOW_VERSION 2.4.0
+RUN wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v${TENSORFLOW_VERSION}/tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl \
+	&& pip3 uninstall tensorflow \
+	&& pip3 install tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl
 
 # Configure JupyterLab
 ENV JUPYTER_PASSWORD jupyter
