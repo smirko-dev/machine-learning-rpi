@@ -13,6 +13,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 	python3-dev \
 	python3-pip \
 	python3-setuptools \
+	python3-sklearn \
 	&& \
 	apt-get clean
 
