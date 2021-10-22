@@ -9,19 +9,17 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 	build-essential \
 	libffi-dev \
 	libhdf5-dev \
-	openssl \
 	python3.7 \
 	python3-dev \
 	python3-pip \
 	python3-setuptools \
-	wget \
 	&& \
 	apt-get clean
 
 # Switch to Python3
 RUN pip3 install --upgrade pip \
 	&& rm -f /usr/bin/python \
-	&& ln -s /usr/bin/python3 /usr/bin/python
+	&& ln -s /usr/bin/python3.7 /usr/bin/python
 
 # Install Python modules
 RUN pip3 install \
