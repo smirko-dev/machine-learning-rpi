@@ -8,6 +8,7 @@ WORKDIR /root
 RUN apt-get update && apt-get -y install --no-install-recommends \
 	build-essential \
 	libffi-dev \
+	libhdf5-dev \
 	openssl \
 	python3.7 \
 	python3-dev \
@@ -24,6 +25,7 @@ RUN pip3 install --upgrade pip \
 
 # Install Python modules
 RUN pip3 install \
+	Cython \
 	jupyterlab==3.1.13 \
 	wheel
 
