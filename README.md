@@ -209,10 +209,13 @@ IRkernel::installspec()
 ## Use Docker container
 
 The docker container is based on [Debian Buster](https://hub.docker.com/r/arm32v7/debian/) for arm32v7 and installs
- - [Tensorflow-on-arm](https://github.com/lhelontra/tensorflow-on-arm)
- - [scikit-learn](https://scikit-learn.org/stable/index.html)
- - [Tini](https://github.com/krallin/tini) which operates as a process subreaper for jupyter to prevent kernel crashes
- - [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) as a simple [notebook server](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html) with password protection
+ - [TensorFlow 2.4.0](https://www.tensorflow.org/) from [tensorflow-on-arm](https://github.com/lhelontra/tensorflow-on-arm) or [tensorflow-arm-bin](https://github.com/bitsy-ai/tensorflow-arm-bin)
+ - [NumPy 1.21.3](https://numpy.org/) as numpy-1.21.3-cp37-cp37m-linux_armv7l
+ - [SciPy 1.7.1](https://www.scipy.org/) as scipy-1.7.1-cp37-cp37m-linux_armv7l
+ - [Scikit-learn 0.20.2](https://scikit-learn.org/stable/index.html)
+ - [Tini 0.19.0](https://github.com/krallin/tini) which operates as a process subreaper for jupyter to prevent kernel crashes
+ - [Jupyter Notebook 6.4.5](https://jupyter.org/)
+ - [Jupyter Lab 3.2.1](https://jupyterlab.readthedocs.io/en/stable/) as a simple [notebook server](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html) with password protection
 
 ### Install packages
 
