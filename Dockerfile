@@ -29,15 +29,15 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 RUN pip3 install --upgrade pip \
 	&& rm -f /usr/bin/python \
 	&& ln -s /usr/bin/python3 /usr/bin/python \
-	&& python --version \
+	&& python --version
 
 # Install Python modules
 RUN pip3 install \
 	Cython \
-#	matplotlib \
-#	pandas \
-#	scikit-learn \
-#	seaborn \
+	matplotlib \
+	pandas \
+	scikit-learn \
+	seaborn \
 	wheel
 
 # Add Tini
