@@ -213,6 +213,8 @@ The docker container is based on [Debian Buster](https://hub.docker.com/r/arm32v
  - [NumPy](https://numpy.org/)
  - [SciPy](https://www.scipy.org/)
  - [Scikit-learn](https://scikit-learn.org/stable/index.html)
+ - [Matplotlib](https://matplotlib.org)
+ - [Pandas](https://pandas.pydata.org/)
  - [Tini](https://github.com/krallin/tini) which operates as a process subreaper for jupyter to prevent kernel crashes
  - [Jupyter Notebook](https://jupyter.org/)
  - [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) as a simple [notebook server](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html) with password protection
