@@ -35,7 +35,7 @@ RUN pip3 install --upgrade pip \
 # Install Python modules
 RUN pip3 install \
 	Cython==0.29.24 \
-	numpy==1.21.3 --no-binary \
+	numpy==1.19.5 --no-binary \
 	wheel
 
 # Add Tini
