@@ -7,6 +7,7 @@ WORKDIR /root
 # Install packages
 RUN apt-get update && apt-get -y install --no-install-recommends \
 	build-essential \
+	gfortran \
 	libatlas-base-dev \
 	libc-ares-dev \
 	libeigen3-dev \
@@ -33,11 +34,8 @@ RUN pip3 install --upgrade pip \
 
 # Install Python modules
 RUN pip3 install \
-	Cython \
-	matplotlib \
-	pandas \
-	scikit-learn \
-	seaborn \
+	Cython==0.29.24 \
+	numpy==1.21.3 --no-binary \
 	wheel
 
 # Add Tini
@@ -49,7 +47,7 @@ RUN chmod +x /usr/bin/tini
 ENV TENSORFLOW_VERSION 2.4.0
 ADD https://github.com/bitsy-ai/tensorflow-arm-bin/releases/download/v${TENSORFLOW_VERSION}/tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl .
 RUN pip3 install \
-	h5py==3.5.0 \
+	h5py==2.10.0 \
 	keras_applications==1.0.8 --no-deps \
 	keras_preprocessing==1.1.0 --no-deps
 RUN pip3 uninstall tensorflow \
@@ -72,6 +70,13 @@ RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /r
 	&& python -c "from notebook.auth import passwd; print(passwd('${JUPYTER_PASSWORD}', 'sha1'));" >> password \
 	&& sed -i "/c.NotebookApp.password/c c.NotebookApp.password = '`cat password`'" /root/.jupyter/jupyter_notebook_config.py \
 	&& rm -f password
+
+# Install additional modules
+RUN apt-get -y install --no-install-recommends \
+	python3-matplotlib \
+	python3-pandas \
+	python3-sklearn \
+	python3-sklearn-lib
 
 # Add volume for notebooks
 VOLUME /root/notebooks
