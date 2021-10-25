@@ -12,17 +12,19 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 	libc-ares-dev \
 	libeigen3-dev \
 	libffi-dev \
+	libfreetype6-dev \
 	libhdf5-103 \
 	libhdf5-dev \
 	libhdf5-serial-dev \
 	libopenmpi-dev \
+	libpng-dev \
 	openmpi-bin \
 	openssl \
 	python3 \
 	python3-dev \
 	python3-pip \
 	python3-setuptools \
-	wget \
+	python3-wheel \
 	&& \
 	apt-get clean
 
@@ -30,13 +32,12 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 RUN pip3 install --upgrade pip \
 	&& rm -f /usr/bin/python \
 	&& ln -s /usr/bin/python3 /usr/bin/python \
+	&& pip3 install Cython \
 	&& python --version
 
 # Install Python modules
 RUN pip3 install \
-	Cython==0.29.24 \
-	numpy==1.19.5 --no-binary \
-	wheel
+	numpy==1.19.5 --no-binary
 
 # Add Tini
 ENV TINI_VERSION 0.19.0
