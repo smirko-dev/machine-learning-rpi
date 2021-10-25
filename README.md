@@ -41,7 +41,7 @@ apt-get install -y --no-install-recommends \
     python3-dev \
     python3-pip \
     python3-setuptools \
-    python3-scipy \
+    python3-wheel \
     wget \
     && \
     apt-get clean
@@ -59,14 +59,14 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 
 ```sh
 sudo pip3 install \
+    Cython \
     keras_applications \
     keras_preprocessing \
     matplot \
     numpy \
     pandas \
     scikit-learn \
-    scipy \
-    wheel
+    scipy
 ```
 
 ## Install Tensorflow
