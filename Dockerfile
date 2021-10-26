@@ -36,8 +36,8 @@ RUN pip3 install --upgrade pip \
 	&& python --version
 
 # Install Python modules
-RUN pip3 install matplotlib==3.0.2
 RUN pip3 install numpy==1.19.5
+RUN pip3 install matplotlib==3.0.2
 RUN pip3 install scikit-learn==0.20.2
 
 # Add Tini
