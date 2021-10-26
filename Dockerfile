@@ -39,6 +39,7 @@ RUN pip3 install --upgrade pip \
 RUN pip3 install numpy==1.19.5
 RUN pip3 install matplotlib==3.0.2
 RUN pip3 install scikit-learn==0.20.2
+RUN pip3 install pandas==1.0
 
 # Add Tini
 ENV TINI_VERSION 0.19.0
@@ -72,10 +73,6 @@ RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /r
 	&& python -c "from notebook.auth import passwd; print(passwd('${JUPYTER_PASSWORD}', 'sha1'));" >> password \
 	&& sed -i "/c.NotebookApp.password/c c.NotebookApp.password = '`cat password`'" /root/.jupyter/jupyter_notebook_config.py \
 	&& rm -f password
-
-# Install pandas
-#RUN apt-get -y install --no-install-recommends python3-pandas
-#RUN pip3 install pandas==0.25.0
 
 # Add volume for notebooks
 VOLUME /root/notebooks
