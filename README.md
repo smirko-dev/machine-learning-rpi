@@ -1,6 +1,6 @@
 # Machine Learning with JupyterLab on a Raspberry Pi
 
-Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.org) on a [Raspberry Pi](https://www.raspberrypi.org) as a service for remote access.
+Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.org) on a [Raspberry Pi](https://www.raspberrypi.org) as a service or within a docker container.
 
 [Setup environment](#setup-environment)
 
