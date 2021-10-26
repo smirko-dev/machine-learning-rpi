@@ -7,4 +7,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version 0.1
 
 ### Added
-- Dockerfile with jupyterlab and tensorflow
+- Dockerfile with notebook, jupyterlab and tensorflow
+- Numpy, Matplotlib, Scikit-learn, Pandas 
