@@ -214,6 +214,12 @@ The docker container is based on [Debian Buster](https://hub.docker.com/r/arm32v
  - [Tini](https://github.com/krallin/tini) which operates as a process subreaper for jupyter to prevent kernel crashes
  - [Jupyter Notebook](https://jupyter.org/) with [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) as a simple [notebook server](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html) with password protection
 
+### Environment variables
+
+- JUPYTER_PASSWORD = jupyter
+- TINI_VERSION = 0.19.0 (used for build only)
+- TENSORFLOW_VERSION = 2.4.0 (used for build only)
+
 ### Install packages
 
 ```sh
