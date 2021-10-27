@@ -22,25 +22,25 @@ Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.
 sudo apt-get update && sudo apt-get upgrade
 
 apt-get install -y --no-install-recommends \
-	build-essential \
-	gfortran \
-	libatlas-base-dev \
-	libc-ares-dev \
-	libeigen3-dev \
-	libffi-dev \
-	libfreetype6-dev \
-	libhdf5-103 \
-	libhdf5-dev \
-	libhdf5-serial-dev \
-	libopenmpi-dev \
-	libpng-dev \
-	openmpi-bin \
-	openssl \
-	python3 \
-	python3-dev \
-	python3-pip \
-	python3-setuptools \
-	python3-wheel \
+    build-essential \
+    gfortran \
+    libatlas-base-dev \
+    libc-ares-dev \
+    libeigen3-dev \
+    libffi-dev \
+    libfreetype6-dev \
+    libhdf5-103 \
+    libhdf5-dev \
+    libhdf5-serial-dev \
+    libopenmpi-dev \
+    libpng-dev \
+    openmpi-bin \
+    openssl \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
     wget \
     && \
     apt-get clean
