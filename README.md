@@ -22,26 +22,25 @@ Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.
 sudo apt-get update && sudo apt-get upgrade
 
 apt-get install -y --no-install-recommends \
-    build-essential \
-    curl \
-    gfortran \
-    libc-ares-dev \
-    libopenblas-dev \
-    libblas-dev \
-    liblapack-dev \
-    libatlas-base-dev \
-    libhdf5-dev \
-    libeigen3-dev \
-    libopenjp2-7-dev \
-    libssl-dev \
-    libffi-dev \
-    libzmq3-dev \
-    pybind11-dev \
-    python3 \
-    python3-dev \
-    python3-pip \
-    python3-setuptools \
-    python3-wheel \
+	build-essential \
+	gfortran \
+	libatlas-base-dev \
+	libc-ares-dev \
+	libeigen3-dev \
+	libffi-dev \
+	libfreetype6-dev \
+	libhdf5-103 \
+	libhdf5-dev \
+	libhdf5-serial-dev \
+	libopenmpi-dev \
+	libpng-dev \
+	openmpi-bin \
+	openssl \
+	python3 \
+	python3-dev \
+	python3-pip \
+	python3-setuptools \
+	python3-wheel \
     wget \
     && \
     apt-get clean
@@ -55,14 +54,12 @@ sudo rm /usr/bin/python
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
 
-### Install Python modules
+### Install additional python modules
 
 ```sh
 sudo pip3 install \
     Cython \
-    keras_applications \
-    keras_preprocessing \
-    matplot \
+    matplotlib \
     numpy \
     pandas \
     scikit-learn \
@@ -71,7 +68,18 @@ sudo pip3 install \
 
 ## Install Tensorflow
 
-Since there are Python wheels available for ARM architecture at https://github.com/lhelontra/tensorflow-on-arm/releases we don't need to build it.
+Since there are Python wheels available for ARM architecture at https://github.com/lhelontra/tensorflow-on-arm/releases or https://github.com/bitsy-ai/tensorflow-arm-bin we don't need to build it.
+
+### Install packages
+
+```sh
+sudo pip3 install \
+    h5py \
+    keras_applications \
+    keras_preprocessing \
+```
+
+### Build and install binaries
 
 ```sh
 wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv7l.whl
@@ -81,7 +89,7 @@ pip3 install tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 
 ## Install Jupyter Lab
 
-### Install packages and Python modules
+### Install packages
 
 ```sh
 sudo apt-get install -y --no-install-recommends \
@@ -117,6 +125,8 @@ c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False
 c.NotebookApp.port = 8888
 c.NotebookApp.allow_remote_access = True
+c.NotebookApp.token = ''
+c.NotebookApp.password_required = True
 c.NotebookApp.notebook_dir = '<your_notebook_folder>'
 c.NotebookApp.default_url = '/lab'
 ```
