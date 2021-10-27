@@ -41,7 +41,7 @@ RUN pip3 install matplotlib==3.0.2
 RUN pip3 install scikit-learn==0.20.2
 RUN pip3 install pandas==1.0
 
-# Add Tini
+# Install Tini
 ENV TINI_VERSION 0.19.0
 ADD https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-armhf /usr/bin/tini
 RUN chmod +x /usr/bin/tini
