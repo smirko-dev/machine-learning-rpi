@@ -80,7 +80,7 @@ Since there are Python wheels available for ARM architecture at https://github.c
 sudo pip3 install \
     h5py \
     keras_applications \
-    keras_preprocessing \
+    keras_preprocessing
 ```
 
 ### Build and install binaries
