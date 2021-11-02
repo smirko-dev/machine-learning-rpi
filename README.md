@@ -14,7 +14,9 @@ Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.
 
 [Install R and IRkernel](#install-r-and-irkernel) (experimental!)
 
-[Docker](#use-docker-container)
+[System service](#use-system-service)
+
+[Docker container](#use-docker-container)
 
 [Links](#links)
 
@@ -27,24 +29,14 @@ sudo apt-get update && sudo apt-get upgrade
 
 apt-get install -y --no-install-recommends \
     build-essential \
-    gfortran \
-    libatlas-base-dev \
     libc-ares-dev \
     libeigen3-dev \
     libffi-dev \
     libfreetype6-dev \
-    libhdf5-103 \
-    libhdf5-dev \
-    libhdf5-serial-dev \
     libopenmpi-dev \
     libpng-dev \
     openmpi-bin \
     openssl \
-    python3 \
-    python3-dev \
-    python3-pip \
-    python3-setuptools \
-    python3-wheel \
     wget \
     && \
     apt-get clean
@@ -53,7 +45,16 @@ apt-get install -y --no-install-recommends \
 ### Switch to Python 3
 
 ```sh
-sudo pip3 install --upgrade pip
+apt-get install -y --no-install-recommends \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel
+```
+
+```sh
+pip3 install --upgrade pip
 sudo rm /usr/bin/python 
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
@@ -61,7 +62,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 ### Install additional python modules
 
 ```sh
-sudo pip3 install \
+pip3 install \
     Cython \
     matplotlib \
     numpy \
@@ -77,7 +78,17 @@ Since there are Python wheels available for ARM architecture at https://github.c
 ### Install packages
 
 ```sh
-sudo pip3 install \
+apt-get install -y --no-install-recommends \
+    build-essential \
+    gfortran \
+    libatlas-base-dev \
+    libhdf5-103 \
+    libhdf5-dev \
+    libhdf5-serial-dev
+```
+
+```sh
+pip3 install \
     h5py \
     keras_applications \
     keras_preprocessing
@@ -99,10 +110,15 @@ pip3 install tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 sudo apt-get install -y --no-install-recommends \
     npm \
     nodejs
+```
 
+```sh
 sudo npm install -g configurable-http-proxy
 
-sudo pip3 install \
+```
+
+```sh
+pip3 install \
     ipywidgets \
     jupyter \
     jupyterlab
@@ -148,35 +164,6 @@ c.NotebookApp.default_url = '/lab'
 }
 ```
 
-### Create the service
-
-Create the service file `/lib/systemd/system/jupyterlab.service`.
-
-```txt
-[Unit] 
-Description=JupyterLab Service 
-After=multi-user.target  
-
-[Service] 
-User=<user_name> 
-ExecStart=/usr/local/bin/jupyter notebook
-Restart=on-failure
-
-[Install] 
-WantedBy=multi-user.target
-```
-
-Start the service.
-
-```sh
-sudo systemctl daemon-reload 
-sudo systemctl start jupyterlab
-sudo systemctl enable jupyterlab 
-sudo systemctl status jupyterlab.service
-```
-
-If the status command shows "active (running)" the Jupyter Lab should be reachable by `http://<server_ip_address>:8888/lab`.
-
 ## Install R and IRkernel
 
 ### Install packages
@@ -213,12 +200,41 @@ ln -s <r_home_directory>/bin/R /usr/local/bin/R
 ln -s <r_home_directory>/bin/Rscript /usr/local/bin/Rscript
 ```
 
-### Build and install IRkernel
+### Install IRkernel
 
 ```R
 install.packages('IRkernel', repos='http://cran.rstudio.com/')
 IRkernel::installspec()
 ```
+
+## Use system service
+
+Create the service file `/lib/systemd/system/jupyterlab.service`.
+
+```txt
+[Unit] 
+Description=JupyterLab Service 
+After=multi-user.target  
+
+[Service] 
+User=<user_name> 
+ExecStart=/usr/local/bin/jupyter notebook
+Restart=on-failure
+
+[Install] 
+WantedBy=multi-user.target
+```
+
+Start the service.
+
+```sh
+sudo systemctl daemon-reload 
+sudo systemctl start jupyterlab
+sudo systemctl enable jupyterlab 
+sudo systemctl status jupyterlab.service
+```
+
+If the status command shows "active (running)" the Jupyter Lab should be reachable by `http://<server_ip_address>:8888/lab`.
 
 ## Use Docker container
 
