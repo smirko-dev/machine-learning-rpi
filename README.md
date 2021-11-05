@@ -1,6 +1,6 @@
 ![platform](https://img.shields.io/badge/platforms-RaspberryPi-silver)
-[![version](https://img.shields.io/badge/version-%200.1.0-green)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/CHANGELOG.md)
-[![](https://img.shields.io/badge/license-MIT-green)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/LICENSE)
+[![version](https://img.shields.io/badge/version-%200.1.0-blue)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/CHANGELOG.md)
+[![](https://img.shields.io/badge/license-MIT-blue)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/LICENSE)
 
 # Machine Learning with JupyterLab on a Raspberry Pi
 
