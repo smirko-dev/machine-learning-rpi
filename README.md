@@ -272,7 +272,7 @@ docker-compose up -d
 
 https://towardsdatascience.com/setup-your-home-jupyterhub-on-a-raspberry-pi-7ad32e20eed
 
-https://github.com/kleinee/jns
+https://github.com/kleinee/jns (MIT License)
 
 https://github.com/armindocachada/raspberrypi-docker-tensorflow-opencv/blob/main/Dockerfile_tensorflow
 
@@ -280,4 +280,4 @@ https://raspberrypi.stackexchange.com/questions/107483/error-installing-tensorfl
 
 https://github.com/kidig/rpi-jupyter-lab
 
-https://github.com/ml-tooling/ml-workspace
+https://github.com/ml-tooling/ml-workspace (Apache-2.0 License)
