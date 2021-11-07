@@ -66,11 +66,10 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 ```sh
 pip3 install \
     Cython \
-    matplotlib \
-    numpy \
-    pandas \
-    scikit-learn \
-    scipy
+    matplotlib==3.0.2 \
+    numpy==1.19.5 \
+    pandas==1.0 \
+    scikit-learn=0.20.2
 ```
 
 ## Install Tensorflow
