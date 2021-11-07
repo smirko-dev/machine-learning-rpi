@@ -90,9 +90,9 @@ apt-get install -y --no-install-recommends \
 
 ```sh
 pip3 install \
-    h5py \
-    keras_applications \
-    keras_preprocessing
+    h5py==2.10.0 \
+    keras_applications==1.0.8 \
+    keras_preprocessing==1.1.2
 ```
 
 ### Build and install binaries
@@ -121,8 +121,8 @@ sudo npm install -g configurable-http-proxy
 ```sh
 pip3 install \
     ipywidgets \
-    jupyter \
-    jupyterlab
+    notebook==6.4.5 \
+    jupyterlab==3.2.1
 ```
 
 ### Create a configuration
