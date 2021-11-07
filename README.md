@@ -65,7 +65,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 
 ```sh
 pip3 install \
-    Cython \
+    Cython==0.29.24 \
     matplotlib==3.0.2 \
     numpy==1.19.5 \
     pandas==1.0 \
