@@ -120,7 +120,6 @@ sudo npm install -g configurable-http-proxy
 
 ```sh
 pip3 install \
-    ipywidgets \
     notebook==6.4.5 \
     jupyterlab==3.2.1
 ```
