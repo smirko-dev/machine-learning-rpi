@@ -175,7 +175,7 @@ sudo apt-get install -y --no-install-recommends \
     libbz2-dev \
     libreadline-dev \
     libgit2-dev \
-    libxml2-de \
+    libxml2-dev \
     libpcre3 \
     libpcre3-dev
 ```
