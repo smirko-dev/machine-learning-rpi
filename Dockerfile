@@ -29,17 +29,16 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 	apt-get clean
 
 # Switch to Python 3
-RUN pip3 install --upgrade pip \
-	&& rm -f /usr/bin/python \
+RUN rm -f /usr/bin/python \
 	&& ln -s /usr/bin/python3 /usr/bin/python \
-	&& pip3 install Cython \
-	&& python --version
+	&& python -m pip install --upgrade pip
 
 # Install Python modules
-RUN pip3 install numpy==1.19.5
-RUN pip3 install matplotlib==3.0.2
-RUN pip3 install scikit-learn==0.20.2
-RUN pip3 install pandas==1.0
+RUN python -m pip install Cython==0.29.24
+RUN python -m pip install numpy==1.19.5
+RUN python -m pip install matplotlib==3.0.2
+RUN python -m pip install scikit-learn==0.20.2
+RUN python -m pip install pandas==1.0
 
 # Install Tini
 ENV TINI_VERSION 0.19.0
@@ -49,16 +48,16 @@ RUN chmod +x /usr/bin/tini
 # Install Tensorflow
 ENV TENSORFLOW_VERSION 2.4.0
 ADD https://github.com/bitsy-ai/tensorflow-arm-bin/releases/download/v${TENSORFLOW_VERSION}/tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl .
-RUN pip3 install \
+RUN python -m pip install \
 	h5py==2.10.0 \
 	keras_applications==1.0.8 --no-deps \
 	keras_preprocessing==1.1.0 --no-deps
-RUN pip3 uninstall tensorflow \
-	&& pip3 install tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl
+RUN python -m pip uninstall tensorflow \
+	&& python -m pip install tensorflow-${TENSORFLOW_VERSION}-cp37-none-linux_armv7l.whl
 
 # Install and configure Jupyter
 ENV JUPYTER_PASSWORD jupyter
-RUN pip3 install \
+RUN python -m pip install \
 	notebook==6.4.5 \
 	jupyterlab==3.2.1
 RUN jupyter serverextension enable --py jupyterlab
