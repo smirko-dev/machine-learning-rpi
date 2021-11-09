@@ -243,7 +243,7 @@ If the status command shows "active (running)" the Jupyter Lab should be reachab
 The docker container is based on [Debian Buster](https://hub.docker.com/r/arm32v7/debian/) for arm32v7 and installs
  - [TensorFlow](https://www.tensorflow.org/) from [tensorflow-on-arm](https://github.com/lhelontra/tensorflow-on-arm) or [tensorflow-arm-bin](https://github.com/bitsy-ai/tensorflow-arm-bin)
  - [NumPy](https://numpy.org/), [SciPy](https://www.scipy.org/), [Scikit-learn](https://scikit-learn.org/stable/index.html), [Matplotlib](https://matplotlib.org) and [Pandas](https://pandas.pydata.org/)
- - [R Project ](https://www.r-project.org/)
+ - [The R Project for Statistical Computing](https://www.r-project.org/)
  - [Tini](https://github.com/krallin/tini) which operates as a process subreaper for jupyter to prevent kernel crashes
  - [Jupyter Notebook](https://jupyter.org/) with [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) as a simple [notebook server](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html) with password protection
 
