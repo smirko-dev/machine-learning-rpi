@@ -1,3 +1,4 @@
+#FROM arm32v7/ubuntu:bionic
 FROM arm32v7/debian:buster
 
 USER root
@@ -10,14 +11,22 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 	gfortran \
 	libatlas-base-dev \
 	libc-ares-dev \
+	libcurl4-openssl-dev \
+	libbz2-dev \
 	libeigen3-dev \
 	libffi-dev \
 	libfreetype6-dev \
+	libgit2-dev \
 	libhdf5-103 \
 	libhdf5-dev \
 	libhdf5-serial-dev \
+	liblzma-dev \
 	libopenmpi-dev \
 	libpng-dev \
+	libpcre3 \
+	libpcre3-dev \
+	libreadline-dev \
+	libxml2-dev \
 	openmpi-bin \
 	openssl \
 	python3 \
@@ -72,6 +81,23 @@ RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /r
 	&& python -c "from notebook.auth import passwd; print(passwd('${JUPYTER_PASSWORD}', 'sha1'));" >> password \
 	&& sed -i "/c.NotebookApp.password/c c.NotebookApp.password = '`cat password`'" /root/.jupyter/jupyter_notebook_config.py \
 	&& rm -f password
+
+# Install R
+ENV R_VERSION 3.6.3
+ADD https://ftp.fau.de/cran/src/base/R-3/R-${R_VERSION}.tar.gz .
+RUN apt-get remove r-base
+RUN tar -xvf R-${R_VERSION}.tar.gz \
+	&& rm R-${R_VERSION}.tar.gz \
+	&& cd R-${R_VERSION} \
+	&& ./configure --with-x=no --disable-java --with-pcre1 --prefix=/root/R \
+	&& make && make install \
+	&& cd .. \
+	&& rm -rf R-${R_VERSION} \
+	&& ln -s /root/R/bin/R /usr/bin/R \
+	&& ln -s /root/R/bin/Rscript /usr/bin/Rscript
+
+COPY ./install.R /root
+RUN Rscript /root/install.R
 
 # Add volume for notebooks
 VOLUME /root/notebooks
