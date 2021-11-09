@@ -83,7 +83,7 @@ RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /r
 	&& rm -f password
 
 # Install R
-ENV R_VERSION 3.6.3
+ENV R_VERSION 3.3.3
 ADD https://ftp.fau.de/cran/src/base/R-3/R-${R_VERSION}.tar.gz .
 RUN apt-get remove r-base
 RUN tar -xvf R-${R_VERSION}.tar.gz \
