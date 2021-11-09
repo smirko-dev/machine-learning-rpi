@@ -185,14 +185,14 @@ sudo apt-get install -y --no-install-recommends \
 ### Build and install binaries
 
 ```sh
-wget https://ftp.fau.de/cran/src/base/R-4/R-4.1.1.tar.gz
-tar -xvf R-4.1.1.tar.gz
-rm R-4.1.1.tar.gz
-cd R-4.1.1
+wget https://ftp.fau.de/cran/src/base/R-3/R-3.3.3.tar.gz
+tar -xvf R-3.3.3.tar.gz
+rm R-3.3.3.tar.gz
+cd R-3.3.3
 ./configure --with-x=no --disable-java --with-pcre1 --prefix=<r_home_directory>
 make && make install
 cd ..
-rm R-4.1.1
+rm R-3.3.3
 ```
 
 ### Create soft links
