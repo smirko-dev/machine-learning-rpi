@@ -173,6 +173,7 @@ sudo apt remove r-base
 
 sudo apt-get install -y --no-install-recommends \
     libbz2-dev \
+    liblzma-dev \
     libreadline-dev \
     libgit2-dev \
     libxml2-dev \
