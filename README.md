@@ -173,6 +173,7 @@ sudo apt remove r-base
 
 sudo apt-get install -y --no-install-recommends \
     libbz2-dev \
+    libcurl4-openssl-dev \
     liblzma-dev \
     libreadline-dev \
     libgit2-dev \
