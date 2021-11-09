@@ -5,6 +5,7 @@
 [![](https://img.shields.io/badge/license-MIT-blue)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/LICENSE)
 [![](https://img.shields.io/badge/dockerhub-smirko%2Fmachine--learning--rpi-blue?logo=docker)](https://hub.docker.com/r/smirko/machine-learning-rpi)
 ![](https://img.shields.io/docker/pulls/smirko/machine-learning-rpi?logo=docker)
+![](https://img.shields.io/docker/image-size/smirko/machine-learning-rpi/latest?logo=docker)
 
 Run [Jupyter Lab](https://jupyter.org) with [Tensorflow](https://www.tensorflow.org) on a [Raspberry Pi](https://www.raspberrypi.org) as a service or within a docker container.
 
