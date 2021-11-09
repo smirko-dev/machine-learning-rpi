@@ -9,6 +9,7 @@ services:
 #      - JUPYTER_PASSWORD=jupyter
 #      - TINI_VERSION=0.19.0
 #      - TENSORFLOW_VERSION=2.4.0
+#      - R_VERSION=3.3.3
     ports:
       - 8881:8888
     volumes:
