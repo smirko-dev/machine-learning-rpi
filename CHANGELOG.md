@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version 0.2
 
 ### Added
-- R 3.6.3 to Dockerfile
+- R 3.3.3 to Dockerfile
 
 ### Changed
 - switched from 'pip3 install' to 'python -m pip install' commands
