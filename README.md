@@ -1,7 +1,7 @@
 # Machine Learning with JupyterLab on a Raspberry Pi
 
-![platform](https://img.shields.io/badge/platforms-RaspberryPi-silver)
-[![version](https://img.shields.io/badge/version-%200.1.0-blue)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/CHANGELOG.md)
+![platform](https://img.shields.io/badge/platforms-linux/arm-silver)
+[![version](https://img.shields.io/badge/version-%200.2.0-blue)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/CHANGELOG.md)
 [![](https://img.shields.io/badge/license-MIT-blue)](https://github.com/smirko-dev/machine-learning-rpi/blob/main/LICENSE)
 [![](https://img.shields.io/badge/dockerhub-smirko%2Fmachine--learning--rpi-blue?logo=docker)](https://hub.docker.com/r/smirko/machine-learning-rpi)
 [![](https://img.shields.io/docker/pulls/smirko/machine-learning-rpi?logo=docker)](https://hub.docker.com/r/smirko/machine-learning-rpi)
@@ -186,14 +186,14 @@ sudo apt-get install -y --no-install-recommends \
 ### Build and install binaries
 
 ```sh
-wget https://ftp.fau.de/cran/src/base/R-4/R-4.1.1.tar.gz
-tar -xvf R-4.1.1.tar.gz
-rm R-4.1.1.tar.gz
-cd R-4.1.1
+wget https://ftp.fau.de/cran/src/base/R-3/R-3.3.3.tar.gz
+tar -xvf R-3.3.3.tar.gz
+rm R-3.3.3.tar.gz
+cd R-3.3.3
 ./configure --with-x=no --disable-java --with-pcre1 --prefix=<r_home_directory>
 make && make install
 cd ..
-rm R-4.1.1
+rm R-3.3.3
 ```
 
 ### Create soft links
@@ -244,6 +244,7 @@ If the status command shows "active (running)" the Jupyter Lab should be reachab
 The docker container is based on [Debian Buster](https://hub.docker.com/r/arm32v7/debian/) for arm32v7 and installs
  - [TensorFlow](https://www.tensorflow.org/) from [tensorflow-on-arm](https://github.com/lhelontra/tensorflow-on-arm) or [tensorflow-arm-bin](https://github.com/bitsy-ai/tensorflow-arm-bin)
  - [NumPy](https://numpy.org/), [SciPy](https://www.scipy.org/), [Scikit-learn](https://scikit-learn.org/stable/index.html), [Matplotlib](https://matplotlib.org) and [Pandas](https://pandas.pydata.org/)
+ - [The R Project for Statistical Computing](https://www.r-project.org/)
  - [Tini](https://github.com/krallin/tini) which operates as a process subreaper for jupyter to prevent kernel crashes
  - [Jupyter Notebook](https://jupyter.org/) with [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) as a simple [notebook server](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html) with password protection
 
@@ -252,6 +253,7 @@ The docker container is based on [Debian Buster](https://hub.docker.com/r/arm32v
 - JUPYTER_PASSWORD = jupyter
 - TINI_VERSION = 0.19.0 (used for build only)
 - TENSORFLOW_VERSION = 2.4.0 (used for build only)
+- R_VERSION = 3.3.3 (used for build only)
 
 ### Install packages
 
